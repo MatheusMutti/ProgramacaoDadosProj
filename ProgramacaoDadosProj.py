@@ -60,7 +60,39 @@ with open('steam_games.csv', newline='', encoding='UTF-8') as csvfile:
 
     print(f"O ano com maior número de lançamentos foi {anoMaisLancamentos}, com o valor de {maiorValor} jogos.")    
 
-    # Pergunta 3:  Jogos com maior Avarage playtime forever, dentre os jogos pagos e os jogos gratuitos.
+    # Pergunta 3:  Jogos com maior Concurrent Users, dentre os jogos pagos e os jogos gratuitos.
+
+    # Criação variáveis
+
+    csvfile.seek(0)
+    next(leitor)
+    maiorNumUsersFree = 0
+    maiorNumUsersPaid = 0
+    nomeMaiorJogoFree = None
+    nomeMaiorJogoPaid = None
+
+
+    # Iterando sobre o arquivo
+
+    for linha in leitor:
+        ccu = int(linha.get('Peak CCU'))
+        nome = linha.get('Name')
+        price = linha.get('Price')
+
+    # Lógica para diferenciação dos jogos
+
+        if price == '0.0':
+            if ccu > maiorNumUsersFree:
+                maiorNumUsersFree = ccu
+                nomeMaiorJogoFree = nome 
+        else : 
+            if ccu > maiorNumUsersPaid:
+                maiorNumUsersPaid = ccu
+                nomeMaiorJogoPaid = nome 
+
+
+    print(f"O jogo gratuito com o maior número de jogadores foi {nomeMaiorJogoFree}, com o total de {maiorNumUsersFree}\nEnquanto o jogo pago com o maior número de jogadores foi {nomeMaiorJogoPaid}, com um total de {maiorNumUsersPaid}")
+
 
 # Funções adicionais
 
