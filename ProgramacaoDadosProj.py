@@ -1,5 +1,4 @@
 import csv
-#import pytest
 
 # Pergunta 1: Qual o percentual de jogos gratuitos e pagos na plataforma?
 
@@ -44,14 +43,13 @@ def encontrar_ano_mais_lancamentos(arquivo):
     # Iterar sobre linhas
 
         for linha in leitor:
-
+            
     # Tratar string para somente acessar o ano
 
             dataString = linha.get('Release date')
             if dataString and len(dataString) >= 4:
                 dataInt = int(dataString[-4:])
-            
-            
+
     # Lógica para manipular o dicionário e maior valor de lançamento
             
                 try:
@@ -121,16 +119,16 @@ if __name__ == "__main__":
     
     # Pergunta 1
     resultado1 = calcular_percentual_jogos_gratuitos(arquivo)
-    print(f"Total: {resultado1['total']}, Gratuitos: {resultado1['free']}, Pagos: {resultado1['paid']}, Percentual Free: {resultado1['percentual_free']:.2f}%")
+    print(f"Total: {resultado1['total']}, Gratuitos: {resultado1['free']}, Pagos: {resultado1['paid']}, Percentual Free: {resultado1['percentual_free']:.2f}%.")
     
     # Pergunta 2
     resultado2 = encontrar_ano_mais_lancamentos(arquivo)
     if resultado2['empates']:
-        print(f"Anos empatados: {resultado2['empates']} com {resultado2['quantidade']} jogos")
+        print(f"Anos empatados: {resultado2['empates']} com {resultado2['quantidade']} jogos.")
     else:
-        print(f"Ano com mais lançamentos: {resultado2['ano']} com {resultado2['quantidade']} jogos")
+        print(f"Ano com mais lançamentos: {resultado2['ano']} com {resultado2['quantidade']} jogos.")
     
     # Pergunta 3
     resultado3 = encontrar_jogos_maior_ccu(arquivo)
-    print(f"Jogo free com maior CCU: {resultado3['free_game']} ({resultado3['free_ccu']})")
-    print(f"Jogo pago com maior CCU: {resultado3['paid_game']} ({resultado3['paid_ccu']})")
+    print(f"Jogo free com maior CCU: {resultado3['free_game']} com o total de {resultado3['free_ccu']}.")
+    print(f"Jogo pago com maior CCU: {resultado3['paid_game']} com o total de {resultado3['paid_ccu']}.")
